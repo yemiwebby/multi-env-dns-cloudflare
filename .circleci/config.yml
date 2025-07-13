@@ -1,0 +1,43 @@
+version: 2.1
+
+executors:
+  terraform-executor:
+    docker:
+      - image: hashicorp/terraform:1.6
+    working_directory: ~/project
+
+jobs:
+  deploy-dns:
+    parameters:
+      env:
+        type: string
+    executor: terraform-executor
+    steps:
+      - checkout
+      - run:
+          name: Terraform Init
+          command: |
+            cd terraform/<< parameters.env >>
+            terraform init
+      - run:
+          name: Terraform Apply
+          command: |
+            cd terraform/<< parameters.env >>
+            terraform apply -auto-approve
+
+workflows:
+  deploy:
+    jobs:
+      - deploy-dns:
+          name: staging-dns
+          env: "staging"
+          filters:
+            branches:
+              only: develop
+
+      - deploy-dns:
+          name: production-dns
+          env: "production"
+          filters:
+            branches:
+              only: main
