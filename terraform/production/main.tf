@@ -19,4 +19,5 @@ resource "cloudflare_record" "prod_api" {
   content   = "go-api-prod.fly.dev"
   ttl     = 120
   proxied = false
+  allow_overwrite = true
 }

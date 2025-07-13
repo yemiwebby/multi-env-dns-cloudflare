@@ -19,4 +19,5 @@ resource "cloudflare_record" "staging_api" {
   content   = "go-api-staging.fly.dev"
   ttl     = 120
   proxied = false
+  allow_overwrite = true
 }
