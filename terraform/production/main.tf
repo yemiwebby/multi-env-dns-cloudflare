@@ -17,7 +17,7 @@ resource "cloudflare_record" "prod_api" {
   name    = "api"
   type    = "CNAME"
   content   = "go-api-prod.fly.dev"
-  ttl     = 1
-  proxied = true
+  ttl     = 120
+  proxied = false
   allow_overwrite = true
 }
