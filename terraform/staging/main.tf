@@ -16,7 +16,7 @@ resource "cloudflare_record" "staging_api" {
   zone_id = var.cloudflare_zone_id
   name    = "api.staging"
   type    = "CNAME"
-  value   = "go-api-staging.fly.dev"
+  content   = "go-api-staging.fly.dev"
   ttl     = 120
   proxied = false
 }
