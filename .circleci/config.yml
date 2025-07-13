@@ -15,7 +15,7 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Terraform Init.
+          name: Terraform Init
           command: |
             cd terraform/<< parameters.env >>
             terraform init
