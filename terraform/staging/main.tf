@@ -17,7 +17,7 @@ resource "cloudflare_record" "staging_api" {
   name    = "api.staging"
   type    = "CNAME"
   content   = "go-api-staging.fly.dev"
-  ttl     = 120
+  ttl     = 1
   proxied = true
   allow_overwrite = true
 }
